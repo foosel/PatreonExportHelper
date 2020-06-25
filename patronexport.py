@@ -318,7 +318,7 @@ def export(inputfile, templatefile, outputfile, rewards, also_declined, from_dat
 	click.echo("Found {} patrons, {} of which are included".format(count, len(patrons)))
 
 	import os
-	env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(os.path.abspath(__file__))),
+	env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.getcwd()),
 	                         trim_blocks=True)
 	templatefile = env.get_template(templatefile)
 	rendered = templatefile.render(total=count,
