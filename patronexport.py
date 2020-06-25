@@ -246,7 +246,7 @@ def extract_additionals(additionalfile, levels=None, mapping=None):
 		levels = []
 	levels = list(map(lambda x: x.lower(), levels))
 
-	click.echo("Filtering additionals for levels {!r}".format(levels))
+	click.echo("Filtering additionals from {} for levels {!r}".format(additionalfile, levels))
 
 	if mapping is None:
 		mapping = dict()
@@ -255,7 +255,7 @@ def extract_additionals(additionalfile, levels=None, mapping=None):
 		click.echo("Additional file {} does not exist!", err=True)
 		sys.exit(-1)
 
-	with codecs.open(additionalfile, errors="replace") as f:
+	with io.open(additionalfile, encoding="utf-8", errors="replace") as f:
 		additionals = yaml.safe_load(f)
 
 	patrons = []
@@ -289,8 +289,9 @@ def extract_mapping(mappingfile):
 		click.echo("Mapping file {} does not exist!", err=True)
 		sys.exit(-1)
 
-	with codecs.open(mappingfile, errors="replace") as f:
+	with io.open(mappingfile, encoding="utf-8", errors="replace") as f:
 		mapping = yaml.safe_load(f)
+
 	return mapping
 
 
@@ -328,7 +329,7 @@ def export(inputfile, templatefile, outputfile, rewards, also_declined, from_dat
 	                               reward_levels=rewards)
 
 	if outputfile is not None:
-		with codecs.open(outputfile, "w", encoding="utf-8") as f:
+		with io.open(outputfile, "w", encoding="utf-8") as f:
 			f.write(rendered)
 	else:
 		click.echo(rendered)
