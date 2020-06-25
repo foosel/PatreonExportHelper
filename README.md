@@ -3,6 +3,8 @@
 Parses CSV Export of patrons from patreon.com, allows extracting patrons pledging for reward levels provided
 on command line and rendering them to stdout using a provided jinja2 template file.
 
+👉 Provided as-is. If it works for you, great, if it doesn't, please understand that I cannot provide any support and won't accept pull requests either.
+
 ## Setup
 
 Requires Python 3 and a bunch of dependencies:
@@ -13,7 +15,34 @@ Installation into virtualenv is recommended.
 
 ## Usage
 
+```
+$ python patronexport.py --help
+Usage: patronexport.py [OPTIONS]
 
+Options:
+  -i, --input PATH       The patron export from Patreon as .csv file
+                         [required]
+
+  -o, --output PATH      The output path
+  -t, --template PATH    The template path of the Jinja2 template to use
+                         [required]
+
+  -r, --reward TEXT      The reward levels to include - textual name, case
+                         insensitive
+
+  -d, --also-declined    Also include declined patrons in output
+  -f, --from TEXT        year-month-day of start date from which to output
+                         patrons
+
+  -, --until TEXT        year-month-day of start date until which to output
+                         patrons
+
+  -m, --mapping PATH     Mapping file from mail to replacement patron metadata
+  -a, --additional PATH  Additional manually managed patrons, as yaml file of
+                         CSV entries
+
+  --help                 Show this message and exit.
+```
 
 All patrons to output file:
 
