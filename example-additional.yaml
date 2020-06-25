@@ -1,0 +1,8 @@
+patrons:
+  - name: An additional patron
+    email: patron@example.com
+    tier: A fun tier
+    status: ok
+
+counts:
+  count_additional_supporters: 23
