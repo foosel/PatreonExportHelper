@@ -68,7 +68,9 @@ class Patron(object):
 	           "last_charge_status",
 	           "details",
 	           "id",
-	           "last_update"]
+	           "last_update",
+	           "discord",
+	           "currency"]
 
 	def __init__(self, mapping=None, *args, **kwargs):
 		if mapping is not None and "email" in kwargs and kwargs["email"] in mapping:
@@ -154,7 +156,10 @@ def map_column_names(names):
 		"last charge status": "last_charge_status",
 		"additional details": "details",
 		"user id": "id",
-		"last updated": "last_update"
+		"last updated": "last_update",
+		"lifetime amount": "lifetime",
+		"pledge amount": "pledge",
+		"max posts": "max"
 	}
 	return [MAP.get(x.lower(), x.lower()) for x in names]
 

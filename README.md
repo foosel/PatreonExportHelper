@@ -86,7 +86,7 @@ A `Patron` object has the following attributes:
   * `phone`: Phone number
   * `start`: Start of patronage
   * `start_date`: Start of patronage as datetime object (parsed by dateutil)
-  * `max`: Maximum monthly amount
+  * `max`: Maximum monthly amount, or maybe posts? (unclear in Patreon export)
   * `tier`: Name of pledge tier (as set up on Patreon)
   * `following`: Whether the patron is following you
   * `charge_frequency`: How often the user gets charged
@@ -96,6 +96,8 @@ A `Patron` object has the following attributes:
   * `id`: User id
   * `last_update`: Date of last update of user data
   * `last_update_date`: Date of last update of user data as datetime object (parsed by dateutil)
+  * `discord`: Discord handle of patron
+  * `currency`: Currency of patronage
 
 ### Template example
 
@@ -129,6 +131,10 @@ someoneelse@example.com:
 ```
 
 ## Changelog
+
+### 2020-10-22
+
+  * Adapted to new columns in CSV export.
 
 ### 2020-06-25
 
