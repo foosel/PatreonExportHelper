@@ -98,6 +98,7 @@ A `Patron` object has the following attributes:
   * `last_update_date`: Date of last update of user data as datetime object (parsed by dateutil)
   * `discord`: Discord handle of patron
   * `currency`: Currency of patronage
+  * `access_expiration`: Value from "Access Expiration" column in CSV export, currently unknown format
 
 ### Template example
 
@@ -131,6 +132,10 @@ someoneelse@example.com:
 ```
 
 ## Changelog
+
+### 2020-11-26
+
+  * Adapted to new columns in CSV export.
 
 ### 2020-10-22
 
