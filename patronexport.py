@@ -97,7 +97,7 @@ class Patron(object):
 		try:
 			self.start_date = dateutil.parser.parse(self.start)
 		except:
-			print("Something went wrong while parsing start date for {}: {!r}".format(self.name, self.start), err=True)
+			click.echo("Something went wrong while parsing start date for {}: {!r}".format(self.name, self.start), err=True)
 
 		if self.last_charge:
 			try:
