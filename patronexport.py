@@ -44,6 +44,10 @@ import os
 import io
 
 
+class NotAPatron(Exception):
+	pass
+
+
 class Patron(object):
 
 	_fields = ["name",
@@ -93,7 +97,10 @@ class Patron(object):
 			if key not in self.__class__._fields:
 				raise KeyError("Invalid field: {}".format(key))
 			setattr(self, key, value)
-
+		
+		if not self.start:
+			raise NotAPatron("No start date for patron {}, probably only a follower".format(self.name))
+		
 		try:
 			self.start_date = dateutil.parser.parse(self.start)
 		except:
@@ -222,6 +229,8 @@ def extract_patrons(filename, levels=None, also_declined=False, from_date=None, 
 			try:
 				row_dict = dict((k, map_column_value(k, v)) for k, v in row_dict.items())
 				patron = Patron.from_row(dict((name, row_dict[name]) for name in valid_column_names), mapping=mapping)
+			except NotAPatron:
+				continue
 			except Exception as exc:
 				click.echo("Something went wrong while parsing and mapping {}: {}".format(row_dict.get("name"), exc), err=True)
 				continue
