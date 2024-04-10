@@ -52,7 +52,6 @@ class Patron(object):
 
 	_fields = ["name",
 	           "email",
-	           "twitter",
 	           "status",
 	           "lifetime",
 	           "pledge",
@@ -75,7 +74,9 @@ class Patron(object):
 	           "last_update",
 	           "discord",
 	           "currency",
-	           "access_expiration"]
+	           "access_expiration",
+               "free member",
+               "next charge date"]
 
 	def __init__(self, mapping=None, *args, **kwargs):
 		if mapping is not None and "email" in kwargs and kwargs["email"] in mapping:
